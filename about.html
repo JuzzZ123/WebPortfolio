@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quizzes - Gengar Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e002e, #32014b, #4b006e);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 0;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #2e003e;
+      padding: 1rem;
+      box-shadow: 0 2px 10px #8e24aa;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: #e0aaff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ff4df2;
+      text-shadow: 0 0 5px #ff99ff;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .about-container {
+      max-width:1700px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: rgba(106, 13, 173, 0.1);
+      border-radius: 1rem;
+      box-shadow: 0 0 20px #b300ff;
+    }
+
+    h1 {
+      font-family: 'Creepster', cursive;
+      font-size: 4rem;
+      color: #ffccff;
+      text-align: center;
+      text-shadow: 0 0 10px #ff00ff;
+      margin-bottom: 2rem;
+    }
+
+    img {
+      width: 160px;
+      float: right;
+      margin-left: 2rem;
+      border-radius: 50%;
+      box-shadow: 0 0 25px #ff00ff;
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+  .paragraph{
+    
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #f3d9ff;
+    
+  }
+
+    .resume-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #6a0dad;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.75rem;
+      font-weight: bold;
+      box-shadow: 0 0 12px #ff00ff;
+      transition: background-color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    .resume-link:hover {
+      background-color: #8a2be2;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #1f0033;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+      box-shadow: 0 -2px 10px #8e24aa;
+    }
+
+    footer a {
+      color: #e0aaff;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ff4df2;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 5%;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      display: block;
+      margin: auto;
+      max-width: 80%;
+      max-height: 80%;
+      width: 600px;
+      height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 25px #ff66ff;
+      overflow: hidden;
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: #ffccff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .about-container {
+        padding: 1rem;
+      }
+
+      img {
+        width: 120px;
+        float: none;
+        display: block;
+        margin: 1rem auto;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .modal-content {
+        max-width: 95%;
+        height: 70%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quizzes.html">Quizzes</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="about-container">
+      <h1>About Me</h1>
+      <img src="gengar.gif" alt="Gengar Profile Pic">
+      <div class="paragraph">
+        <p>Hello! I'm Niejhay Lazaro, an IT student with a passion for learning and creating. I’ve always been fascinated by how technology works and how we can use it to solve real-world problems — that curiosity led me to pursue a degree in Information Technology.</p>
+      
+        <p>When I’m not coding or working on school projects, you’ll usually find me diving into online games, especially strategy-based ones. There’s something about outsmarting opponents, managing resources, and planning every move that keeps me hooked. Games like these teach patience, logic, and how to adapt — lessons I find valuable even outside the screen.</p>
+      
+        <p>I also enjoy music. I often listen to lo-fi beats while studying or just to relax. Every now and then, I pick up my guitar and play a few chords — nothing fancy, just enough to soothe the mind. It’s one of those quiet hobbies that brings peace amidst the chaos.</p>
+      
+        <p>One thing I really value is listening to other people’s stories. Whether it's about their struggles or achievements, I believe every person has something worth sharing. I once heard a friend talk about how he failed multiple times before finally succeeding in his career. That stuck with me. It reminded me that failure isn’t the end — sometimes, it’s just the beginning of something better.</p>
+      
+        <p>So that’s a little bit about me — a tech enthusiast, a gamer, a music lover, and someone who’s always curious about the lives and lessons of others.</p>
+      </div>
+      
+      <div class="resume-link" onclick="openModal()">View My Resume</div>
+    </div>
+  </main>
+
+  <!-- Modal Structure -->
+  <div id="resume-modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <iframe src="my-CV/Lazaro, Niejhay (cv).pdf" class="modal-content" frameborder="0"></iframe>
+  </div>
+
+  <footer id="contact">
+    <p>Contact: niejniej15@gmail.com</p>
+    <p><a href="https://github.com/yourusername">GitHub</a> | <a href="https://linkedin.com/in/yourprofile">LinkedIn</a></p>
+  </footer>
+
+  <script>
+    function openModal() {
+      document.getElementById("resume-modal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("resume-modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>

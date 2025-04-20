@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quizzes - Gengar Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e002e, #32014b, #4b006e);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background: #2e003e;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px #8e24aa;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: #e0aaff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff4df2;
+      text-shadow: 0 0 5px #ff99ff;
+    }
+
+    h1 {
+      font-family: 'Creepster', cursive;
+      color: #ffccff;
+      font-size: 3rem;
+      text-align: center;
+      margin-top: 2rem;
+      text-shadow: 0 0 10px #ff00ff;
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .quiz-item {
+      height: 200px;
+     
+      background: #6a0dad;
+      padding: 1.2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 15px #ff00ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .quiz-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #ff66ff;
+    }
+
+    .quiz-meta {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: normal;
+      color: #ffd6ff;
+    }
+
+    .quiz-meta span {
+      display: block;
+      margin: 2px 0;
+    }
+
+    .quiz-meta .date {
+      color: #ffaaff;
+      font-style: italic;
+    }
+
+    .quiz-meta .score {
+      color: #ffb347;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #1f0033;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+      box-shadow: 0 -2px 10px #8e24aa;
+    }
+
+    footer a {
+      color: #e0aaff;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ff4df2;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .quiz-item {
+        font-size: 1rem;
+      }
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 5%;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      display: block;
+      margin: auto;
+      max-width: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 25px #ff66ff;
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: #ffccff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quizzes.html">Quizzes</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>My Quizzes</h1>
+    <div class="quiz-grid">
+      <div class="quiz-item" onclick="openModal('quiz1-img')">
+        Quiz 1
+        <div class="quiz-meta">
+          <span class="date">Date taken: March 29, 2025</span>
+          <span class="score">Score: 15/15</span>
+        </div>
+      </div>
+      <div class="quiz-item" onclick="openModal('quiz2-img')">
+        Quiz 2
+        <div class="quiz-meta">
+          <span class="date">Date taken: April 1, 2025</span>
+          <span class="score">Score: 13/15</span>
+        </div>
+      </div>
+      <div class="quiz-item" onclick="openModal('quiz3-img')">
+        Quiz 3
+        <div class="quiz-meta">
+          <span class="date">Date taken: April 5, 2025</span>
+          <span class="score">Score: 14/15</span>
+        </div>
+      </div>
+      <div class="quiz-item" onclick="openModal('quiz4-img')">
+        Quiz 4
+        <div class="quiz-meta">
+          <span class="date">Date taken: April 10, 2025</span>
+          <span class="score">Score: 12/15</span>
+        </div>
+      </div>
+      <div class="quiz-item" onclick="openModal('quiz5-img')">
+        Quiz 5
+        <div class="quiz-meta">
+          <span class="date">Date taken: April 15, 2025</span>
+          <span class="score">Score: 15/15</span>
+        </div>
+      </div>
+      <div class="quiz-item" onclick="openModal('quiz5-img')">
+        Quiz 6
+        <div class="quiz-meta">
+          <span class="date">Date taken:</span>
+          <span class="score">Score:</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Structure -->
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-img" />
+  </div>
+
+  <!-- Hidden Image Sources -->
+  <img id="quiz1-img" src="pre-test-1-5/1.png" style="display:none;" />
+  <img id="quiz2-img" src="pre-test-1-5/2.png" style="display:none;" />
+  <img id="quiz3-img" src="pre-test-1-5/3.png" style="display:none;" />
+  <img id="quiz4-img" src="pre-test-1-5/4.png" style="display:none;" />
+  <img id="quiz5-img" src="pre-test-1-5/5.png" style="display:none;" />
+
+  <footer id="contact">
+    <p>Contact: niejniej15@gmail.com</p>
+    <p><a href="https://github.com/yourusername">GitHub</a> | <a href="https://linkedin.com/in/yourprofile">LinkedIn</a></p>
+  </footer>
+
+  <script>
+    function openModal(imgId) {
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modal-img");
+      const imgSrc = document.getElementById(imgId).src;
+
+      modal.style.display = "block";
+      modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
