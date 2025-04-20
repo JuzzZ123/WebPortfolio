@@ -7,15 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
     html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-main {
-  flex: 1;
-}
+    main {
+      flex: 1;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -78,7 +79,6 @@ main {
 
     .quiz-item {
       height: 200px;
-     
       background: #6a0dad;
       padding: 1.2rem;
       border-radius: 0.75rem;
@@ -88,6 +88,13 @@ main {
       font-weight: bold;
       font-size: 1.1rem;
       text-align: center;
+    }
+
+    .quiz-title {
+      font-family: 'Creepster', cursive;  /* Applying the font only to the title */
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #ffccff;
     }
 
     .quiz-item:hover {
@@ -201,42 +208,42 @@ main {
     <h1>My Quizzes</h1>
     <div class="quiz-grid">
       <div class="quiz-item" onclick="openModal('quiz1-img')">
-        Quiz 1
+        <span class="quiz-title">ADVANCE HCI</span>
         <div class="quiz-meta">
           <span class="date">Date taken: March 29, 2025</span>
           <span class="score">Score: 15/15</span>
         </div>
       </div>
       <div class="quiz-item" onclick="openModal('quiz2-img')">
-        Quiz 2
+        <span class="quiz-title">USER CENTERED DESIGN & RESEARCH METHODS</span>
         <div class="quiz-meta">
           <span class="date">Date taken: April 1, 2025</span>
           <span class="score">Score: 13/15</span>
         </div>
       </div>
       <div class="quiz-item" onclick="openModal('quiz3-img')">
-        Quiz 3
+        <span class="quiz-title">USABILITY PRINCIPLES & HEURISTIC EVALUATION</span>
         <div class="quiz-meta">
           <span class="date">Date taken: April 5, 2025</span>
           <span class="score">Score: 14/15</span>
         </div>
       </div>
       <div class="quiz-item" onclick="openModal('quiz4-img')">
-        Quiz 4
+        <span class="quiz-title">INTERACTION DESIGN & PROTOTYPING</span>
         <div class="quiz-meta">
           <span class="date">Date taken: April 10, 2025</span>
           <span class="score">Score: 12/15</span>
         </div>
       </div>
       <div class="quiz-item" onclick="openModal('quiz5-img')">
-        Quiz 5
+        <span class="quiz-title">INFORMATION ARCHITECTURE & NAVIGATION DESIGN</span>
         <div class="quiz-meta">
           <span class="date">Date taken: April 15, 2025</span>
           <span class="score">Score: 15/15</span>
         </div>
       </div>
-      <div class="quiz-item" onclick="openModal('quiz5-img')">
-        Quiz 6
+      <div class="quiz-item" onclick="openModal('quiz6-img')">
+        <span class="quiz-title">Quiz 6</span>
         <div class="quiz-meta">
           <span class="date">Date taken:</span>
           <span class="score">Score:</span>
@@ -257,10 +264,11 @@ main {
   <img id="quiz3-img" src="pre-test-1-5/3.png" style="display:none;" />
   <img id="quiz4-img" src="pre-test-1-5/4.png" style="display:none;" />
   <img id="quiz5-img" src="pre-test-1-5/5.png" style="display:none;" />
+  <img id="quiz6-img" src="pre-test-1-5/6.png" style="display:none;" />
 
   <footer id="contact">
     <p>Contact: niejniej15@gmail.com</p>
-    <p><a href="https://github.com/yourusername">GitHub</a> | <a href="https://linkedin.com/in/yourprofile">LinkedIn</a></p>
+    <p><a href="https://github.com/yourusername">GitHub</a> | <a href="https://www.linkedin.com/in/niejhay-lazaro-736363361/">LinkedIn</a></p>
   </footer>
 
   <script>
