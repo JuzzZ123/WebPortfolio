@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favico.png" type="image/x-icon">
+    <title>GymBro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-image: url("background.png");
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1050px;
+            background: transparent;
+            padding: 0px 0;
+            z-index: 1000;
+            border-radius: 15px 15px 0 0;
+            filter: drop-shadow(0 0 100px rgb(0, 183, 255));
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, transparent, rgb(207, 253, 255), transparent) 1;
+        }
+
+        .navbar ul li {
+            position: relative;
+            flex: 1;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-style: italic;
+            text-align: center;
+            padding: 15px;
+            margin-left: 0px;
+            margin-right: -20px;
+            background: linear-gradient(135deg, rgba(0, 175, 239, 0.24) 0%, rgba(0, 0, 0, 0) 100%);
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+            text-shadow: 0 0 10px rgba(0, 175, 239, 0.3);
+        }
+
+        .navbar ul li a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .navbar ul li:hover {
+            background: linear-gradient(135deg, rgba(0, 175, 239, 0.801) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .navbar ul li a:hover {
+            color: #e0f7ff;
+        }
+
+        .navbar ul li:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 10px;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            transform: skewX(-30deg);
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding-top: 80px;
+        }
+
+        /* New External Search Bar */
+        .external-search-container {
+            width: 90%;
+            max-width: 950px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .external-search-box {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 30px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0, 183, 255, 0.4);
+            border: 2px solid rgba(0, 175, 239, 0.3);
+        }
+
+        .external-search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+        }
+
+        .external-search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .external-search-box button {
+            background: linear-gradient(135deg, rgba(0, 175, 239, 0.8), rgba(0, 96, 131, 0.8));
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .external-search-box button:hover {
+            background: linear-gradient(135deg, rgba(0, 175, 239, 1), rgba(0, 96, 131, 1));
+            box-shadow: 0 0 15px rgba(0, 183, 255, 0.6);
+        }
+
+        .external-search-box .search-icon {
+            color: white;
+            font-size: 20px;
+        }
+
+        .main-container {
+            position: relative;
+            width: 90%;
+            max-width: 950px;
+            padding: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            min-height: 90vh;
+            background-image: url('img/gym.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .main-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgb(1, 33, 65), rgba(0, 12, 31, 0.767));
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                width: 95%;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+            }
+            .navbar ul li {
+                width: 100%;
+                text-align: left;
+                clip-path: none;
+            }
+            .navbar ul li:not(:last-child)::after {
+                display: none;
+            }
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            height: auto;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .search-box.active {
+            width: 200px;
+            height: auto;
+        }
+
+        .search-box.active input {
+            width: 100%;
+            opacity: 1;
+        }
+
+        .icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height: 350px;
+            position: relative;
+            overflow: visible;
+            margin-bottom: 20px;
+        }
+
+        .category-circle {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-circle::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid white;
+            border-radius: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .category-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transform: scale(0.85);
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            z-index: 0;
+        }
+
+        .category-circle:hover img {
+            transform: scale(0.95);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 16, 32, 0.4), rgba(0, 30, 60, 0.7));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-icon {
+            font-size: 70px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-name {
+            margin-top: 15px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .head {
+            margin-bottom: 20px;
+            border-bottom: 3px solid #ccc;
+            font-size: 25px;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .category-circle {
+                width: 220px;
+                height: 220px;
+            }
+            .category {
+                width: 250px;
+                height: 300px;
+            }
+            .category-icon {
+                font-size: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .external-search-box {
+                max-width: 90%;
+            }
+            .categories {
+                flex-direction: column;
+            }
+            .category-circle {
+                width: 180px;
+                height: 180px;
+            }
+            .category {
+                width: 200px;
+                height: 250px;
+            }
+            .category-icon {
+                font-size: 50px;
+            }
+        }
+        
+        .responsive-logo {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+    max-width: 1050px; /* This keeps the original max size */
+    display: block;
+    margin: 0 auto; /* This centers the logo */
+}
+
+/* Add responsive breakpoints if needed */
+@media (max-width: 768px) {
+    .responsive-logo {
+        max-width: 90%; /* Slightly smaller on tablets */
+        margin-top: 100px;
+        
+    }
+}
+
+@media (max-width: 480px) {
+    .responsive-logo {
+        max-width: 95%; /* Even smaller on mobile phones */
+    }
+}
+/* Footer Styles */
+.footer {
+width: 100%;
+margin-top: 0px;
+position: relative;
+color: white;
+}
+
+.footer-container {
+position: relative;
+width: 90%;
+max-width: 1050px;
+margin: 0 auto;
+padding: 0;
+overflow: hidden;
+}
+
+.footer-top {
+position: relative;
+height: 40px;
+background: linear-gradient(90deg, transparent, rgba(0, 175, 239, 0.3), transparent);
+clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+filter: drop-shadow(0 0 20px rgba(0, 175, 239, 0.5));
+}
+
+.footer-content {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+padding: 40px 40px;
+position: relative;
+z-index: 1;
+background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%);
+clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 5% 100%, 0 90%);
+}
+
+.footer-content::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 2px;
+background: linear-gradient(90deg, transparent, rgba(0, 175, 239, 0.8), transparent);
+}
+
+.footer-section {
+flex: 1;
+min-width: 200px;
+padding: 0 20px;
+margin-bottom: 20px;
+text-align: left;
+}
+
+.footer-section h4 {
+color: #00AEEF;
+font-size: 18px;
+font-style: italic;
+margin-bottom: 20px;
+position: relative;
+display: inline-block;
+}
+
+.footer-section h4::after {
+content: '';
+position: absolute;
+bottom: -8px;
+left: 0;
+width: 40px;
+height: 2px;
+background: linear-gradient(90deg, rgba(0, 175, 239, 0.8), transparent);
+}
+
+.footer-links {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.footer-links li {
+margin-bottom: 10px;
+}
+
+.footer-links a {
+color: rgba(255, 255, 255, 0.8);
+text-decoration: none;
+transition: 0.3s;
+position: relative;
+padding-left: 15px;
+}
+
+.footer-links a::before {
+content: '';
+position: absolute;
+left: 0;
+top: 50%;
+transform: translateY(-50%);
+width: 8px;
+height: 1px;
+background: rgba(0, 175, 239, 0.8);
+transition: width 0.3s;
+}
+
+.footer-links a:hover {
+color: #00AEEF;
+}
+
+.footer-links a:hover::before {
+width: 12px;
+}
+
+.social-icons {
+display: flex;
+margin-top: 15px;
+}
+
+.social-icon {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+background: linear-gradient(135deg, rgba(0, 175, 239, 0.2), rgba(0, 0, 0, 0.2));
+color: white;
+text-decoration: none;
+margin-right: 10px;
+transition: 0.3s;
+border: 1px solid rgba(0, 175, 239, 0.5);
+text-shadow: 0 0 5px rgba(0, 175, 239, 0.5);
+}
+
+.social-icon:hover {
+background: linear-gradient(135deg, rgba(0, 175, 239, 0.5), rgba(0, 0, 0, 0.3));
+transform: translateY(-3px);
+box-shadow: 0 0 15px rgba(0, 175, 239, 0.5);
+}
+
+.footer-bottom {
+padding: 20px 0;
+text-align: center;
+font-size: 14px;
+color: rgba(255, 255, 255, 0.6);
+position: relative;
+}
+
+.footer-bottom::before {
+content: '';
+position: absolute;
+top: 0;
+left: 30%;
+right: 30%;
+height: 1px;
+background: linear-gradient(90deg, transparent, rgba(0, 175, 239, 0.5), transparent);
+}
+
+@media (max-width: 768px) {
+.footer-content {
+    flex-direction: column;
+    padding: 30px 20px;
+    clip-path: none;
+}
+
+.footer-section {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.footer-top {
+    clip-path: none;
+}
+}
+
+/* Newsletter form styles */
+.newsletter-form {
+display: flex;
+margin-top: 15px;
+}
+
+.newsletter-input {
+flex: 1;
+padding: 10px 15px;
+border: none;
+background: rgba(255, 255, 255, 0.1);
+color: white;
+border-radius: 4px 0 0 4px;
+}
+
+.newsletter-button {
+padding: 10px 10px;
+background: linear-gradient(135deg, rgba(0, 175, 239, 0.8), rgba(0, 129, 175, 0.8));
+color: white;
+border: none;
+border-radius: 0 4px 4px 0;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.newsletter-button:hover {
+background: linear-gradient(135deg, rgba(0, 175, 239, 1), rgba(0, 129, 175, 1));
+}
+
+/* Back to top button */
+.back-to-top {
+position: fixed;
+bottom: 30px;
+right: 30px;
+width: 50px;
+height: 50px;
+background: linear-gradient(135deg, rgba(0, 175, 239, 0.8), rgba(0, 0, 0, 0.5));
+color: white;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+z-index: 1000;
+opacity: 0.7;
+transition: 0.3s;
+border: 1px solid rgba(0, 175, 239, 0.5);
+box-shadow: 0 0 15px rgba(0, 175, 239, 0.3);
+}
+
+.back-to-top:hover {
+opacity: 1;
+transform: translateY(-5px);
+}
+
+        /* Mobile menu elements - Hidden by default */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 1001;
+            background-color: rgba(0, 175, 239, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .sidebar {
+            display: none; /* Hidden by default for all screen sizes */
+            position: fixed;
+            top: 0;
+            right: -300px; /* Start off-screen, Pixel 7 is 600x1080px */
+            width: 85%; /* Width relative to screen size for better Pixel 7 fit */
+            max-width: 300px;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 51, 102, 0.98) 100%);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
+            overflow-y: auto;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            backdrop-filter: blur(2px);
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            background: rgba(0, 175, 239, 0.4);
+            color: white;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .sidebar-close {
+            position: absolute;
+            top: 24px;
+            right: 20px;
+            font-size: 22px;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-close:active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 8px;
+            padding: 0 16px;
+        }
+
+        .sidebar ul li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 18px;
+        }
+
+        .sidebar ul li a:hover {
+            background: rgba(0, 175, 239, 0.3);
+            transform: translateX(5px);
+        }
+
+        .sidebar ul li a:active {
+            background: rgba(0, 175, 239, 0.5);
+            transform: translateX(3px);
+        }
+
+        .sidebar ul li a i {
+            margin-right: 16px;
+            font-size: 22px;
+            width: 28px;
+            text-align: center;
+            color: #00AEEF;
+        }
+
+        .sidebar-footer {
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+
+        /* Mobile-specific styles, optimized for Pixel 7 */
+        @media (max-width: 768px) {
+            .navbar {
+                display: none; /* Hide the regular navbar on mobile */
+            }
+
+            .mobile-menu-toggle {
+                display: flex; /* Show the toggle button only on mobile */
+            }
+
+            .sidebar.active {
+                right: 0; /* Slide in when active */
+                display: block; /* Show it when active */
+            }
+
+            .main-container {
+                width: 90%; /* Slightly narrower container on Pixel 7 */
+                padding: 24px; /* Adjusted padding for Pixel 7 */
+                margin-top: 24px;
+                border-radius: 12px;
+            }
+
+            .wrapper {
+                padding-top: 24px;
+            }
+            
+            /* Touch target sizes optimized for Pixel 7 */
+            .sidebar ul li a {
+                padding: 18px 16px; /* Larger touch targets */
+                margin-bottom: 6px;
+            }
+
+            /* Mobile carousel adjustments */
+            .carousel-slide img {
+                height: 300px;
+            }
+
+            .carousel-caption {
+                padding: 15px;
+            }
+
+            .carousel-caption h3 {
+                font-size: 20px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
+            .product-image {
+                height: 150px;
+            }
+        }
+        
+        /* Specific media query for Pixel 7 dimensions */
+        @media (max-width: 600px) {
+            .sidebar {
+                width: 85%; /* Relative size for Pixel 7 */
+            }
+            
+            .mobile-menu-toggle {
+                top: 12px;
+                right: 12px;
+            }
+            
+            .main-container {
+                padding: 20px;
+            }
+
+            .carousel-slide img {
+                height: 220px;
+            }
+
+            .carousel-caption h3 {
+                font-size: 18px;
+            }
+
+            .carousel-caption p {
+                font-size: 14px;
+            }
+        }
+/* Add Modal Popup Styles */
+.modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            overflow: auto;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-container {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            margin: 10vh auto;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 51, 102, 0.9));
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 175, 239, 0.5);
+            border: 1px solid rgba(0, 175, 239, 0.3);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: all 0.3s ease;
+        }
+
+        .modal.active .modal-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, rgba(0, 175, 239, 0.8), rgba(0, 129, 175, 0.8));
+            color: white;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 24px;
+            font-style: italic;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .modal-body p {
+            margin-bottom: 20px;
+        }
+
+        .modal-body h3 {
+            color: rgba(0, 175, 239, 0.9);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 175, 239, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .modal-footer {
+            padding: 15px 30px;
+            text-align: right;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, rgba(0, 175, 239, 0.8), rgba(0, 129, 175, 0.8));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .modal-btn:hover {
+            background: linear-gradient(135deg, rgba(0, 175, 239, 1), rgba(0, 129, 175, 1));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .modal-container {
+                width: 95%;
+                margin: 5vh auto;
+            }
+            
+            .modal-header h2 {
+                font-size: 20px;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+    <script>
+        function toggleSearch() {
+            let searchBox = document.getElementById("searchBox");
+            searchBox.classList.add("active");
+            document.getElementById("searchInput").focus();
+        }
+
+        function searchPrograms(event) {
+            if (event.key === "Enter") {
+                let searchQuery = document.getElementById("searchInput").value.toLowerCase();
+                searchForPrograms(searchQuery);
+            }
+        }
+        
+        function searchExternalPrograms() {
+            let searchQuery = document.getElementById("externalSearchInput").value.toLowerCase();
+            searchForPrograms(searchQuery);
+            return false;
+        }
+        
+        function searchForPrograms(query) {
+            let categories = document.querySelectorAll(".category");
+            
+            categories.forEach(category => {
+                if (category.innerText.toLowerCase().includes(query)) {
+                    category.style.display = "flex";
+                } else {
+                    category.style.display = "none";
+                }
+            });
+            
+            // Scroll to the categories area
+            document.querySelector(".categories").scrollIntoView({behavior: "smooth"});
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="program.html">Program</a></li>
+            <li><a href="apparel.html">Apparel</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            GymBro
+            <span class="sidebar-close"><i class="fas fa-times"></i></span>
+        </div>
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="program.html">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Program</span>
+                </a>
+            </li>
+            <li>
+                <a href="apparel.html">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Apparel</span>
+                </a>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+           
+            <li>
+                <a href="#contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            © 2025 GymBro
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    <div class="wrapper">
+        <img src="logo.png" class="responsive-logo" alt="Logo">
+        
+        <!-- New External Search Bar -->
+        <div class="external-search-container">
+            <form class="external-search-box" onsubmit="return searchExternalPrograms()">
+                <input type="text" id="externalSearchInput" placeholder="Search for programs..." autocomplete="off">
+                <button type="submit">
+                    <div class="search-icon">🔍</div>
+                </button>
+            </form>
+        </div>
+        
+        <div class="main-container">
+            <b><div class="head">Let's Get Started!</div></b>
+            <div class="search-container">
+                <div class="search-box" id="searchBox" onclick="toggleSearch()">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" id="searchInput" placeholder="Search..." onkeydown="searchPrograms(event)">
+                </div>
+            </div>
+            <div class="categories">
+                <div class="category">
+                    <a href="abs.html">
+                        <div class="category-circle">
+                            <img src="img/abs.png" alt="Abs">
+                            <div class="category-overlay">
+                                <div class="category-icon"><img src="abs.png" width="200px" height="200px"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="category-name">Abs</div>
+                </div>
+                <div class="category">
+                    <a href="legs.html">
+                        <div class="category-circle">
+                            <img src="img/legs.png" alt="Legs">
+                            <div class="category-overlay">
+                                <div class="category-icon"><img src="leg.png" width="200px" height="200px"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="category-name">Legs</div>
+                </div>
+                <div class="category">
+                    <a href="shoulder.html">
+                        <div class="category-circle">
+                            <img src="img/shoulder.png" alt="Shoulder">
+                            <div class="category-overlay">
+                                <div class="category-icon"><img src="shoulder.png" width="200px" height="200px"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="category-name">Shoulder</div>
+                </div>
+                <div class="category">
+                    <a href="back.html">
+                        <div class="category-circle">
+                            <img src="img/back.png" alt="Back">
+                            <div class="category-overlay">
+                                <div class="category-icon"><img src="back.png" width="200px" height="200px"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="category-name">Back</div>
+                </div>
+                <div class="category">
+                    <a href="triceps.html">
+                        <div class="category-circle">
+                            <img src="img/triceps.png" alt="Triceps">
+                            <div class="category-overlay">
+                                <div class="category-icon"><img src="tri.png" width="200px" height="200px"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="category-name">Triceps</div>
+                </div>
+                <div class="category">
+                    <a href="bicep.html">
+                        <div class="category-circle">
+                            <img src="img/biceps.png" alt="Biceps">
+                            <div class="category-overlay">
+                                <div class="category-icon"><img src="biceps.png" width="200px" height="200px"></div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="category-name">Biceps</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Start -->
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <div class="footer-top"></div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="apparel.html">Apparel</a></li>
+                        <li><a href="products.html">Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="resource-link" data-modal="support-modal">Support</a></li>
+                        <li><a href="#" class="resource-link" data-modal="privacy-modal">Privacy Policy</a></li>
+                        <li><a href="#" class="resource-link" data-modal="terms-modal">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <p>Follow us on social media for updates, tips, and news.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/faust.otk" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@wawehinnit" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                                <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                              </svg>
+                        </a>
+                        <a href="https://www.instagram.com/wawehinnit/" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485c-.039-.843-.047-1.096-.047-3.233 0-2.135.008-2.388.047-3.231.036-.78.166-1.204.276-1.485.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@waweh5688" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="footer-bottom">
+                <p style="color: white;">&copy; 2025 GymBro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+<!-- Modal Popups -->
+    <!-- Support Modal -->
+    <div id="support-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Customer Support</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to GymBro Customer Support. We're here to help you with any questions or issues you might have.</p>
+                
+                <h3>Frequently Asked Questions</h3>
+                <p><strong>How do I track my order?</strong><br>
+                You can track your order by logging into your account and visiting the "Order History" section. You'll find detailed tracking information there.</p>
+                
+                <p><strong>What is your return policy?</strong><br>
+                We offer a 30-day return policy for unused items in their original packaging. Please visit our Returns page for detailed instructions.</p>
+                
+                <h3>Contact Methods</h3>
+                <p><strong>Email:</strong> sc.kenneth.naquila@cvsu.edu.ph<br>
+                <strong>Phone:</strong> (+63) 951 141 0427<br>
+                <strong>Hours:</strong> Monday - Friday, 9am - 5pm PT</p>
+                
+                <p>For the fastest response, please include your order number when contacting our support team.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>At GymBro, we take your privacy seriously. This Privacy Policy describes how we collect, use, and share your personal information when you use our website or purchase our products.</p>
+                
+                <h3>Information We Collect</h3>
+                <p>We collect information you provide directly to us, such as your name, email address, postal address, phone number, and payment information when you register for an account, place an order, or communicate with us.</p>
+                
+                <p>We also automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies installed on your device.</p>
+                
+                <h3>How We Use Your Information</h3>
+                <p>We use the information we collect to:</p>
+                <p>- Process your orders and maintain your account<br>
+                - Communicate with you about products, services, and promotions<br>
+                - Improve and optimize our website<br>
+                - Prevent fraudulent transactions and monitor against theft<br>
+                - Comply with our legal obligations</p>
+                
+                <h3>Sharing Your Information</h3>
+                <p>We share your information with service providers to help us provide our services and fulfill our commitments to you. We may also share information to comply with the law or protect our rights.</p>
+                
+                <h3>Your Rights</h3>
+                <p>Depending on your location, you may have the right to access personal information we hold about you and to ask that your personal information be corrected, updated, or deleted.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Terms of Service</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to GymBro. By accessing our website and purchasing our products, you agree to these Terms of Service.</p>
+                
+                <h3>Account Terms</h3>
+                <p>You must create an account to make purchases. You are responsible for maintaining the security of your account and password. GymBro cannot and will not be liable for any loss or damage from your failure to comply with this security obligation.</p>
+                
+                <h3>Products and Pricing</h3>
+                <p>All prices are in USD unless otherwise stated. We reserve the right to change product prices at any time. We do not guarantee that product descriptions or other content is accurate, complete, reliable, current, or error-free.</p>
+                
+                <h3>Shipping and Delivery</h3>
+                <p>Shipping rates are calculated based on weight, dimensions, and destination. We aim to process orders within 1-2 business days. Once shipped, delivery times vary based on your location and chosen shipping method.</p>
+                
+                <h3>Returns and Exchanges</h3>
+                <p>We offer a 30-day return policy for unused items in their original packaging. Customer is responsible for return shipping costs unless the item received was defective or incorrect.</p>
+                
+                <h3>Intellectual Property</h3>
+                <p>The content on the GymBro website, including text, graphics, logos, and images, is owned by GymBro and is protected by copyright, trademark, and other intellectual property laws.</p>
+                
+                <h3>Limitation of Liability</h3>
+                <p>In no case shall GymBro, our directors, officers, employees, affiliates, agents, contractors, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Popup Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all the resource links
+            const resourceLinks = document.querySelectorAll('.resource-link');
+            
+            // Add click event to each link
+            resourceLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the modal ID from data attribute
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    
+                    if (modal) {
+                        // Display the modal
+                        modal.style.display = 'block';
+                        
+                        // Add active class after a small delay for animation
+                        setTimeout(() => {
+                            modal.classList.add('active');
+                        }, 10);
+                        
+                        // Prevent body scrolling
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close modal functionality
+            const closeButtons = document.querySelectorAll('.modal-close, .close-modal, .modal-overlay');
+            
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Find the parent modal
+                    const modal = this.closest('.modal');
+                    
+                    if (modal) {
+                        // Remove active class first (for animation)
+                        modal.classList.remove('active');
+                        
+                        // Hide modal after animation completes
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            // Re-enable body scrolling
+                            document.body.style.overflow = 'auto';
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Close modal with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const activeModals = document.querySelectorAll('.modal.active');
+                    
+                    activeModals.forEach(modal => {
+                        modal.classList.remove('active');
+                        
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }, 300);
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Show or hide back to top button based on scroll position
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.opacity = '0.7';
+            } else {
+                backToTopButton.style.opacity = '0';
+            }
+        });
+
+        // Smooth scroll to top when back to top button is clicked
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add smooth scrolling to all navigation links
+        document.querySelectorAll('nav a, .footer-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // Only apply smooth scroll if the href is on the same page
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    } else {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add code for mobile menu toggle if needed
+        });
+    </script>
+    <script>
+        // Wait until DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const closeButton = document.querySelector('.sidebar-close');
+            
+            // Function to toggle sidebar
+            function toggleSidebar() {
+                sidebar.classList.toggle('active');
+                
+                if (sidebar.classList.contains('active')) {
+                    overlay.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    
+                    // Add transition after a tiny delay to ensure smooth animation
+                    setTimeout(() => {
+                        sidebar.style.transition = 'right 0.3s ease';
+                    }, 10);
+                } else {
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Enable scrolling
+                }
+            }
+            
+            // Add event listeners for mobile menu
+            menuToggle.addEventListener('click', toggleSidebar);
+            closeButton.addEventListener('click', toggleSidebar);
+            overlay.addEventListener('click', toggleSidebar);
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Add touch feedback for mobile
+            const touchItems = document.querySelectorAll('.sidebar ul li a, .mobile-menu-toggle, .sidebar-close');
+            touchItems.forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.8';
+                });
+                item.addEventListener('touchend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+
+            // Carousel Functionality
+            const carousel = document.getElementById('mainCarousel');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            
+            // Function to update carousel position
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Next slide function
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Previous slide function
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Add event listeners for carousel controls
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Add event listeners for indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Autoplay functionality
+            let autoplayInterval = setInterval(nextSlide, 5000);
+            
+            // Pause autoplay on hover or touch
+            carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+            carousel.addEventListener('touchstart', () => clearInterval(autoplayInterval), { passive: true });
+            
+            // Resume autoplay when mouse leaves
+            carousel.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            });
+            
+            // Resume autoplay when touch ends
+            carousel.addEventListener('touchend', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>

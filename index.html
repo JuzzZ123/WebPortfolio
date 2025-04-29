@@ -4,25 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gengar Portfolio</title>
-  <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
     html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-    body {
+      height: 100%;
       margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #1e002e, #32014b, #4b006e);
       color: #ffffff;
-      padding: 0;
       overflow-x: hidden;
     }
 
@@ -32,12 +30,14 @@ main {
     }
 
     nav {
-      background-color: #2e003e;
-      padding: 1rem;
-      box-shadow: 0 2px 10px #8e24aa;
+      background: rgba(46, 0, 62, 0.7);
+      padding: 1.5rem;
       text-align: center;
-      position: sticky;
+      box-shadow: 0 2px 10px #8e24aa;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 999;
     }
 
@@ -51,15 +51,15 @@ main {
       flex-wrap: wrap;
     }
 
-    nav a {
+    nav a, .card {
       color: #e0aaff;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       transition: color 0.3s ease;
     }
 
-    nav a:hover {
+    nav a:hover, .card:hover {
       color: #ff4df2;
       text-shadow: 0 0 5px #ff99ff;
     }
@@ -69,11 +69,10 @@ main {
       padding: 4rem 2rem;
       background: rgba(106, 13, 173, 0.05);
       box-shadow: 0 0 20px #b300ff;
-      border-radius: 0 0 2rem 2rem;
     }
 
     .gengar-img {
-      width: 160px;
+      width: 200px;
       animation: float 3s ease-in-out infinite;
       transition: transform 0.3s ease;
       box-shadow: 0 0 25px #ff00ff;
@@ -97,7 +96,7 @@ main {
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
     }
 
     .featured h2 {
@@ -126,11 +125,10 @@ main {
       border-radius: 1rem;
       width: 280px;
       text-align: center;
-      color: #ffffff;
-      font-weight: bold;
       box-shadow: 0 0 10px #ff00ff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      display: block;
     }
 
     .card:hover {
@@ -158,9 +156,19 @@ main {
       color: #ff4df2;
     }
 
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #e0aaff;
+      cursor: pointer;
+      position: absolute;
+      top: -0.1rem;
+      right: 4rem;
+    }
+
     @media (max-width: 768px) {
       h1, .featured h2 {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
 
       .card {
@@ -179,58 +187,28 @@ main {
       .gengar-img {
         width: 120px;
       }
-    }
 
-    /* MODAL STYLES */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background: rgba(30, 0, 46, 0.95);
-      backdrop-filter: blur(4px);
-    }
+      .menu-toggle {
+        display: block;
+      }
 
-    .modal-content {
-      background: #290042;
-      margin: 5% auto;
-      padding: 2rem;
-      border-radius: 1.5rem;
-      max-width: 700px;
-      color: #ffffff;
-      box-shadow: 0 0 25px #ff00ff;
-      position: relative;
-      animation: fadeIn 0.4s ease-out;
-    }
+      #nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+      }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 1.5rem;
-      color: #ff99ff;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .close-btn:hover {
-      color: #ff4df2;
+      #nav-links.showing {
+        display: flex;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <ul>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="quizzes.html">Quizzes</a></li>
         <li><a href="projects.html">Projects</a></li>
@@ -241,111 +219,32 @@ main {
 
   <main>
     <section class="hero">
-      <img src="pokemon-gengar.gif" alt="Gengar" class="gengar-img" />
       <h1>Welcome to My Gengar-Inspired Portfolio</h1>
+      <img src="gengar's/pokemon-gengar.gif" alt="Gengar" class="gengar-img" />
     </section>
 
     <section class="featured">
       <h2>Featured Work</h2>
       <div class="work-cards">
-        <div class="card" id="project1-btn">Project 1</div>
-        <div class="card" id="project2-btn">Project 2</div>
-        <div class="card" id="project3-btn">Project 3</div>
+        <a href="project1.html" class="card">Gym Bro's</a>
+        <a href="project2.html" class="card">N/A</a>
+        <a href="project3.html" class="card">N/A</a>
       </div>
     </section>
-
-    <!-- MODAL FOR PROJECT 1 -->
-    <div id="project1-modal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>GYMMMMMMMM</h2>
-        <p>.............</p>
-      </div>
-    </div>
-
-    <!-- MODAL FOR PROJECT 2 -->
-<div id="project2-modal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h2>Project 2 Title</h2>
-    <p>Details about project 2 go here...</p>
-  </div>
-</div>
-
-<!-- MODAL FOR PROJECT 3 -->
-<div id="project3-modal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h2>Project 3 Title</h2>
-    <p>Details about project 3 go here...</p>
-  </div>
-</div>
-
   </main>
 
-  <footer id="contact">
+  <footer>
     <p>Contact: niejniej15@gmail.com</p>
     <p><a href="https://github.com/yourusername">GitHub</a> | <a href="https://www.linkedin.com/in/niejhay-lazaro-736363361/">LinkedIn</a></p>
   </footer>
 
   <script>
-    // === PROJECT 1 ===
-    const project1Btn = document.getElementById("project1-btn");
-    const modal1 = document.getElementById("project1-modal");
-    const closeBtn1 = modal1.querySelector(".close-btn");
-  
-    project1Btn.addEventListener("click", () => {
-      modal1.style.display = "block";
-    });
-  
-    closeBtn1.addEventListener("click", () => {
-      modal1.style.display = "none";
-    });
-  
-    window.addEventListener("click", (event) => {
-      if (event.target === modal1) {
-        modal1.style.display = "none";
-      }
-    });
-  
-    // === PROJECT 2 ===
-    const project2Btn = document.getElementById("project2-btn");
-    const modal2 = document.getElementById("project2-modal");
-    const closeBtn2 = modal2.querySelector(".close-btn");
-  
-    project2Btn.addEventListener("click", () => {
-      modal2.style.display = "block";
-    });
-  
-    closeBtn2.addEventListener("click", () => {
-      modal2.style.display = "none";
-    });
-  
-    window.addEventListener("click", (event) => {
-      if (event.target === modal2) {
-        modal2.style.display = "none";
-      }
-    });
-  
-    // === PROJECT 3 ===
-    const project3Btn = document.getElementById("project3-btn");
-    const modal3 = document.getElementById("project3-modal");
-    const closeBtn3 = modal3.querySelector(".close-btn");
-  
-    project3Btn.addEventListener("click", () => {
-      modal3.style.display = "block";
-    });
-  
-    closeBtn3.addEventListener("click", () => {
-      modal3.style.display = "none";
-    });
-  
-    window.addEventListener("click", (event) => {
-      if (event.target === modal3) {
-        modal3.style.display = "none";
-      }
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('showing');
     });
   </script>
-  
 </body>
 </html>

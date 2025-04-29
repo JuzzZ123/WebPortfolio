@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favico.png" type="image/x-icon">
+    <title>GymBro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Optional: Add smooth scrolling behavior for older browsers
+        document.querySelector('.explore-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const mainContent = document.getElementById('main-content');
+            mainContent.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="program.html">Program</a></li>
+            <li><a href="apparel.html">Apparel</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar (Mobile Only) -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            GymBro
+            <span class="sidebar-close"><i class="fas fa-times"></i></span>
+        </div>
+        <ul>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="program.html">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Program</span>
+                </a>
+            </li>
+            <li>
+                <a href="apparel.html">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Apparel</span>
+                </a>
+            </li>
+            <li>
+                <a href="products.html">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+           
+            <li>
+                <a href="#contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            © 2025 GymBro
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    <div class="wrapper">
+        <img src="logo.png" class="responsive-logo" alt="Logo" style="margin-bottom: -100px;">
+    <a href="#main-content" class="explore-button" style="margin-bottom: 200px; margin-top: 100px;">
+        Explore Now
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="arrow-down">
+            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+        </svg>
+    </a>
+        <div id="main-content" class="main-container">
+<div class="diagonal-container">
+    <div class="left-column">
+        <div class="content-wrapper">
+            <h2>Benefits of Exercising for Men</h2>
+            <p>"Exercise provides many benefits for men, including increased muscle strength, improved cardiovascular health, and effective weight management. 
+                <br>Strength training helps boost testosterone levels, supporting muscle growth, bone density, and overall energy levels. 
+                <br>Regular workouts enhance metabolism, reduce the risk of heart disease, and improve endurance for daily activities. 
+                <br>Exercise also lowers stress, promotes better sleep, and boosts mental health by releasing endorphins, leading to increased focus and overall well-being."</p>
+           
+            <a href="#" class="action-button">Learn More</a>
+        </div>
+    </div>
+    <div class="right-column">
+        <div class="content-wrapper">
+            <h2>Benefits of Exercising for Women</h2>
+            <p>"Exercising offers numerous benefits for women, including improved muscle tone, better cardiovascular health, and effective weight management. 
+                <br>Strength training helps increase bone density, reducing the risk of osteoporosis, especially as women age. 
+                <br>Regular workouts boost metabolism, enhance mood by releasing endorphins, and support hormonal balance, which can help with menstrual health and menopause symptoms. 
+                <br>Exercise also improves flexibility, reduces stress, promotes better sleep, and strengthens the immune system, contributing to overall well-being."</p>
+         
+            
+            <a href="#" class="action-button">Get Started</a>
+        </div>
+    </div>
+</div>
+<div class="article-section">
+    <div class="article-container">
+        <div class="coaches-container">
+            <!-- Left Section: Coach Kenneth -->
+            <div class="coach-content">
+                <div class="coach-image">
+                    <img src="img/kenneth.jpg" alt="Coach Kenneth">
+                </div>
+                <div class="coach-info">
+                    <h3><em>Coach Kenneth</em></h3>
+                    <p class="article-meta">Personal Trainer</p>
+                    <p><strong>SPECIALTIES:</strong></p>
+                    <p>Weight Lifting  
+                       <br>Strength and Conditioning  
+                       <br>Weight Loss / Weight Gain / Muscle Gain  
+                       <br>Circuit Training  
+                       <br>Flexibility  
+                       <br>Mobility Training  
+                       <br>Body Building  
+                       <br>Basic Nutrition</p>
+                </div>
+            </div>
+        
+            <!-- Vertical Line Separator -->
+            <div class="separator"></div>
+        
+            <!-- Middle Section: Coach Ruel -->
+            <div class="coach-content">
+                <div class="coach-image">
+                    <img src="img/ruel.jpg" alt="Coach Ruel">
+                </div>
+                <div class="coach-info">
+                    <h3><em>Coach Ruel</em></h3>
+                    <p class="article-meta">Personal Trainer</p>
+                    <p><strong>SPECIALTIES:</strong></p>
+                    <p>Weight Lifting  
+                       <br>Boxing / Muah Thai  
+                       <br>Functional Training 
+                       <br>Circuit Training  
+                       <br>Toning and Shaping  
+                       <br>Body Building /Muscle Toning 
+                       <br>Fat Loss / Weight Loss  
+                       <br>Customized Meal Plan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article-section reverse">
+    <div class="article-container three-column">
+        <!-- Left Section -->
+        <div class="article-content">
+            <div class="article-image">
+                <img src="img/oneonone.jpg" alt="One-on-one">
+            </div>
+            <h3>One-on-One Training</h3>
+            <p>One-on-one personalized workouts with your coach are designed to make you stronger from the inside out. Each session is tailored to your fitness level, ensuring steady progress toward your goals..</p>
+            <a href="#" class="article-link">Read More</a>
+        </div>
+        
+        <!-- Middle Section -->
+        <div class="article-content">
+            <div class="article-image">
+                <img src="img/consultation.jpeg" alt="Consult">
+            </div>
+            <h3>Fitness Consultation</h3>
+            
+            <p>Through a short survey, conversation, and a movement assessment, your coach will prescribe the perfect program to get you started and on track to meet your fitness goals. You'll also receive expert tips on maintaining long-term progress.</p>
+            <a href="#" class="article-link">Read More</a>
+        </div>
+        
+        <!-- Right Section -->
+        <div class="article-content">
+            <div class="article-image">
+                <img src="img/groupworkout.jpg" alt="Groupworkout">
+            </div>
+            <h3>Group-Workout</h3>
+           
+            <p>Full-body workouts are designed to build strength and endurance, using the energy of a small group or team of people around you and the expertise of the coach to maximize your results. These sessions foster motivation, accountability, and a sense of community.</p>
+            <a href="#" class="article-link">Read More</a>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer Start -->
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <div class="footer-top"></div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="program.html">Program</a></li>
+                        <li><a href="apparel.html">Apparel</a></li>
+                        <li><a href="products.html">Products</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="resource-link" data-modal="support-modal">Support</a></li>
+                        <li><a href="#" class="resource-link" data-modal="privacy-modal">Privacy Policy</a></li>
+                        <li><a href="#" class="resource-link" data-modal="terms-modal">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <p>Follow us on social media for updates, tips, and news.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/faust.otk" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@wawehinnit" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                                <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                              </svg>
+                        </a>
+                        <a href="https://www.instagram.com/wawehinnit/" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485c-.039-.843-.047-1.096-.047-3.233 0-2.135.008-2.388.047-3.231.036-.78.166-1.204.276-1.485.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@waweh5688" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GymBro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+<!-- Modal Popups -->
+    <!-- Support Modal -->
+    <div id="support-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Customer Support</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to GymBro Customer Support. We're here to help you with any questions or issues you might have.</p>
+                
+                <h3>Frequently Asked Questions</h3>
+                <p><strong>How do I track my order?</strong><br>
+                You can track your order by logging into your account and visiting the "Order History" section. You'll find detailed tracking information there.</p>
+                
+                <p><strong>What is your return policy?</strong><br>
+                We offer a 30-day return policy for unused items in their original packaging. Please visit our Returns page for detailed instructions.</p>
+                
+                <h3>Contact Methods</h3>
+                <p><strong>Email:</strong> sc.kenneth.naquila@cvsu.edu.ph<br>
+                <strong>Phone:</strong> (+63) 951 141 0427<br>
+                <strong>Hours:</strong> Monday - Friday, 9am - 5pm PT</p>
+                
+                <p>For the fastest response, please include your order number when contacting our support team.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>At GymBro, we take your privacy seriously. This Privacy Policy describes how we collect, use, and share your personal information when you use our website or purchase our products.</p>
+                
+                <h3>Information We Collect</h3>
+                <p>We collect information you provide directly to us, such as your name, email address, postal address, phone number, and payment information when you register for an account, place an order, or communicate with us.</p>
+                
+                <p>We also automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies installed on your device.</p>
+                
+                <h3>How We Use Your Information</h3>
+                <p>We use the information we collect to:</p>
+                <p>- Process your orders and maintain your account<br>
+                - Communicate with you about products, services, and promotions<br>
+                - Improve and optimize our website<br>
+                - Prevent fraudulent transactions and monitor against theft<br>
+                - Comply with our legal obligations</p>
+                
+                <h3>Sharing Your Information</h3>
+                <p>We share your information with service providers to help us provide our services and fulfill our commitments to you. We may also share information to comply with the law or protect our rights.</p>
+                
+                <h3>Your Rights</h3>
+                <p>Depending on your location, you may have the right to access personal information we hold about you and to ask that your personal information be corrected, updated, or deleted.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Terms of Service</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to GymBro. By accessing our website and purchasing our products, you agree to these Terms of Service.</p>
+                
+                <h3>Account Terms</h3>
+                <p>You must create an account to make purchases. You are responsible for maintaining the security of your account and password. GymBro cannot and will not be liable for any loss or damage from your failure to comply with this security obligation.</p>
+                
+                <h3>Products and Pricing</h3>
+                <p>All prices are in USD unless otherwise stated. We reserve the right to change product prices at any time. We do not guarantee that product descriptions or other content is accurate, complete, reliable, current, or error-free.</p>
+                
+                <h3>Shipping and Delivery</h3>
+                <p>Shipping rates are calculated based on weight, dimensions, and destination. We aim to process orders within 1-2 business days. Once shipped, delivery times vary based on your location and chosen shipping method.</p>
+                
+                <h3>Returns and Exchanges</h3>
+                <p>We offer a 30-day return policy for unused items in their original packaging. Customer is responsible for return shipping costs unless the item received was defective or incorrect.</p>
+                
+                <h3>Intellectual Property</h3>
+                <p>The content on the GymBro website, including text, graphics, logos, and images, is owned by GymBro and is protected by copyright, trademark, and other intellectual property laws.</p>
+                
+                <h3>Limitation of Liability</h3>
+                <p>In no case shall GymBro, our directors, officers, employees, affiliates, agents, contractors, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Popup Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all the resource links
+            const resourceLinks = document.querySelectorAll('.resource-link');
+            
+            // Add click event to each link
+            resourceLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the modal ID from data attribute
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    
+                    if (modal) {
+                        // Display the modal
+                        modal.style.display = 'block';
+                        
+                        // Add active class after a small delay for animation
+                        setTimeout(() => {
+                            modal.classList.add('active');
+                        }, 10);
+                        
+                        // Prevent body scrolling
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close modal functionality
+            const closeButtons = document.querySelectorAll('.modal-close, .close-modal, .modal-overlay');
+            
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Find the parent modal
+                    const modal = this.closest('.modal');
+                    
+                    if (modal) {
+                        // Remove active class first (for animation)
+                        modal.classList.remove('active');
+                        
+                        // Hide modal after animation completes
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            // Re-enable body scrolling
+                            document.body.style.overflow = 'auto';
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Close modal with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const activeModals = document.querySelectorAll('.modal.active');
+                    
+                    activeModals.forEach(modal => {
+                        modal.classList.remove('active');
+                        
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }, 300);
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Show or hide back to top button based on scroll position
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.opacity = '0.7';
+            } else {
+                backToTopButton.style.opacity = '0';
+            }
+        });
+
+        // Smooth scroll to top when back to top button is clicked
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add smooth scrolling to all navigation links
+        document.querySelectorAll('nav a, .footer-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                // Only apply smooth scroll if the href is on the same page
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    } else {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add code for mobile menu toggle if needed
+        });
+    </script>
+    <script>
+        // Wait until DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const closeButton = document.querySelector('.sidebar-close');
+            
+            // Function to toggle sidebar
+            function toggleSidebar() {
+                sidebar.classList.toggle('active');
+                
+                if (sidebar.classList.contains('active')) {
+                    overlay.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    
+                    // Add transition after a tiny delay to ensure smooth animation
+                    setTimeout(() => {
+                        sidebar.style.transition = 'right 0.3s ease';
+                    }, 10);
+                } else {
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Enable scrolling
+                }
+            }
+            
+            // Add event listeners for mobile menu
+            menuToggle.addEventListener('click', toggleSidebar);
+            closeButton.addEventListener('click', toggleSidebar);
+            overlay.addEventListener('click', toggleSidebar);
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Add touch feedback for mobile
+            const touchItems = document.querySelectorAll('.sidebar ul li a, .mobile-menu-toggle, .sidebar-close');
+            touchItems.forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.8';
+                });
+                item.addEventListener('touchend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+
+            // Carousel Functionality
+            const carousel = document.getElementById('mainCarousel');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            
+            // Function to update carousel position
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Next slide function
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Previous slide function
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+            
+            // Add event listeners for carousel controls
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Add event listeners for indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Autoplay functionality
+            let autoplayInterval = setInterval(nextSlide, 5000);
+            
+            // Pause autoplay on hover or touch
+            carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+            carousel.addEventListener('touchstart', () => clearInterval(autoplayInterval), { passive: true });
+            
+            // Resume autoplay when mouse leaves
+            carousel.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            });
+            
+            // Resume autoplay when touch ends
+            carousel.addEventListener('touchend', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>

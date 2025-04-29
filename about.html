@@ -20,18 +20,15 @@
       overflow-x: hidden;
     }
 
-    header {
-      padding: 0;
-      margin: 0;
-    }
-
     nav {
-      background-color: #2e003e;
-      padding: 1rem;
-      box-shadow: 0 2px 10px #8e24aa;
+      background: rgba(46, 0, 62, 0.7);
+      padding: 1.5rem;
       text-align: center;
-      position: sticky;
+      box-shadow: 0 2px 10px #8e24aa;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 999;
     }
 
@@ -41,19 +38,20 @@
       padding: 0;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
       flex-wrap: wrap;
+      gap: 1.5rem;
+      flex-direction: row;
     }
 
-    nav ul li a {
+    nav a {
       color: #e0aaff;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       transition: color 0.3s ease;
     }
 
-    nav ul li a:hover {
+    nav a:hover {
       color: #ff4df2;
       text-shadow: 0 0 5px #ff99ff;
     }
@@ -93,13 +91,11 @@
       transform: scale(1.05) rotate(2deg);
     }
 
-  .paragraph{
-    
-      font-size: 1.2rem;
+    .paragraph {
+      font-size: 1.5rem;
       line-height: 1.8;
       color: #f3d9ff;
-    
-  }
+    }
 
     .resume-link {
       display: inline-block;
@@ -140,7 +136,6 @@
       color: #ff4df2;
     }
 
-    /* Modal styles */
     .modal {
       display: none;
       position: fixed;
@@ -176,9 +171,19 @@
       cursor: pointer;
     }
 
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #e0aaff;
+      cursor: pointer;
+      position: absolute;
+      top: -0.1rem;
+      right: 4rem;
+    }
+
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
 
       .about-container {
@@ -197,6 +202,22 @@
         gap: 0.75rem;
       }
 
+      .menu-toggle {
+        display: block;
+        text-align: right;
+        margin-bottom: 1rem;
+      }
+
+      #nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      #nav-links.showing {
+        display: flex;
+      }
+
       .modal-content {
         max-width: 95%;
         height: 70%;
@@ -207,7 +228,8 @@
 <body>
   <header>
     <nav>
-      <ul>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="quizzes.html">Quizzes</a></li>
         <li><a href="projects.html">Projects</a></li>
@@ -216,27 +238,20 @@
     </nav>
   </header>
 
-  <main>
+  <main><br><br><br><br>
     <div class="about-container">
       <h1>About Me</h1>
-      <img src="gengar.gif" alt="Gengar Profile Pic">
+      <img src="gengar's/gengar.gif" alt="Gengar Profile Pic">
       <div class="paragraph">
-        <p>Hello! I'm Niejhay Lazaro, an IT student with a passion for learning and creating. I’ve always been fascinated by how technology works and how we can use it to solve real-world problems — that curiosity led me to pursue a degree in Information Technology.</p>
-      
-        <p>When I’m not coding or working on school projects, you’ll usually find me diving into online games, especially strategy-based ones. There’s something about outsmarting opponents, managing resources, and planning every move that keeps me hooked. Games like these teach patience, logic, and how to adapt — lessons I find valuable even outside the screen.</p>
-      
-        <p>I also enjoy music. I often listen to lo-fi beats while studying or just to relax. Every now and then, I pick up my guitar and play a few chords — nothing fancy, just enough to soothe the mind. It’s one of those quiet hobbies that brings peace amidst the chaos.</p>
-      
-        <p>One thing I really value is listening to other people’s stories. Whether it's about their struggles or achievements, I believe every person has something worth sharing. I once heard a friend talk about how he failed multiple times before finally succeeding in his career. That stuck with me. It reminded me that failure isn’t the end — sometimes, it’s just the beginning of something better.</p>
-      
-        <p>So that’s a little bit about me — a tech enthusiast, a gamer, a music lover, and someone who’s always curious about the lives and lessons of others.</p>
+        <p>Hey! I’m Niejhay Lazaro — an IT student who’s into tech, creativity, and cool ideas. I love figuring out how things work and using tech to solve everyday problems.</p> 
+        <p>When I’m not coding, I’m probably deep into a strategy game, listening to chill lo-fi beats, or strumming a few guitar chords to unwind.</p> 
+        <p>I also like hearing people’s stories — there’s always something to learn. For me, failure isn’t the end. It’s just part of the journey.</p> 
+        <p>That’s me — curious, creative, and always exploring.</p>
       </div>
-      
       <div class="resume-link" onclick="openModal()">View My Resume</div>
     </div>
   </main>
 
-  <!-- Modal Structure -->
   <div id="resume-modal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <iframe src="my-CV/Lazaro, Niejhay (cv).pdf" class="modal-content" frameborder="0"></iframe>
@@ -248,6 +263,12 @@
   </footer>
 
   <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('showing');
+    });
+
     function openModal() {
       document.getElementById("resume-modal").style.display = "block";
     }

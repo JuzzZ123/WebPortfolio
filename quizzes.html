@@ -6,17 +6,16 @@
   <title>Quizzes - Gengar Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
+    /* --- SAME CSS AS YOURS --- */
     html, body {
       height: 100%;
       margin: 0;
       display: flex;
       flex-direction: column;
     }
-
     main {
       flex: 1;
     }
-
     body {
       margin: 0;
       padding: 0;
@@ -24,18 +23,19 @@
       background: linear-gradient(135deg, #1e002e, #32014b, #4b006e);
       color: #ffffff;
       overflow-x: hidden;
+      padding-top: 80px;
     }
-
     nav {
-      background: #2e003e;
-      padding: 1rem;
-      text-align: center;
-      box-shadow: 0 2px 10px #8e24aa;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
+  background: rgba(46, 0, 62, 0.7); /* Slightly transparent background */
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 10px #8e24aa;
+  position: fixed; /* Make it fixed */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure it spans the entire width */
+  z-index: 999;
+}
     nav ul {
       list-style: none;
       margin: 0;
@@ -45,42 +45,56 @@
       flex-wrap: wrap;
       gap: 1.5rem;
     }
-
     nav a {
       color: #e0aaff;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       transition: color 0.3s ease;
     }
-
     nav a:hover {
       color: #ff4df2;
       text-shadow: 0 0 5px #ff99ff;
     }
-
-    h1 {
+    h1, h2 {
       font-family: 'Creepster', cursive;
       color: #ffccff;
-      font-size: 3rem;
       text-align: center;
-      margin-top: 2rem;
       text-shadow: 0 0 10px #ff00ff;
+      margin-top: 2rem;
     }
-
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2.2rem;
+      margin-top: 3rem;
+    }
+    /* Adjusted styles for quiz grid */
     .quiz-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      display: flex; /* Change to flex to make items display in a row */
       gap: 2rem;
-      max-width: 800px;
+      max-width: 100%; /* Allow it to expand to full width */
       margin: 2rem auto;
       padding: 0 1rem;
+      overflow-x: auto; /* Enable horizontal scroll for small screens */
+    }
+    .test-container {
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    /* Optional: Set the items to not wrap */
+    .quiz-grid {
+      flex-wrap: nowrap;
     }
 
     .quiz-item {
+      min-width: 230px; /* Ensure items stay in a reasonable size */
+      flex: 0 0 auto;
       height: 200px;
       background: #6a0dad;
-      padding: 1.2rem;
+      padding: 1.5rem;
       border-radius: 0.75rem;
       box-shadow: 0 0 15px #ff00ff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -89,41 +103,34 @@
       font-size: 1.1rem;
       text-align: center;
     }
-
     .quiz-title {
-      font-family: 'Creepster', cursive;  /* Applying the font only to the title */
+      font-family: 'Creepster', cursive;
       font-weight: bold;
       font-size: 1.2rem;
       color: #ffccff;
     }
-
     .quiz-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 0 25px #ff66ff;
     }
-
     .quiz-meta {
       margin-top: 0.5rem;
       font-size: 0.95rem;
       font-weight: normal;
       color: #ffd6ff;
     }
-
     .quiz-meta span {
       display: block;
       margin: 2px 0;
     }
-
     .quiz-meta .date {
       color: #ffaaff;
       font-style: italic;
     }
-
     .quiz-meta .score {
       color: #ffb347;
       font-weight: bold;
     }
-
     footer {
       background: #1f0033;
       text-align: center;
@@ -132,34 +139,16 @@
       margin-top: 4rem;
       box-shadow: 0 -2px 10px #8e24aa;
     }
-
     footer a {
       color: #e0aaff;
       text-decoration: none;
       margin: 0 0.5rem;
       transition: color 0.3s ease;
     }
-
     footer a:hover {
       color: #ff4df2;
     }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-
-      .quiz-item {
-        font-size: 1rem;
-      }
-    }
-
-    /* Modal styles */
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -172,7 +161,6 @@
       overflow: auto;
       background-color: rgba(0,0,0,0.9);
     }
-
     .modal-content {
       display: block;
       margin: auto;
@@ -180,7 +168,6 @@
       border-radius: 10px;
       box-shadow: 0 0 25px #ff66ff;
     }
-
     .close {
       position: absolute;
       top: 30px;
@@ -190,12 +177,52 @@
       font-weight: bold;
       cursor: pointer;
     }
+    /* Responsive */
+    .menu-toggle {
+  display: none; /* Hide by default */
+  font-size: 2rem;
+  color: #e0aaff;
+  cursor: pointer;
+  position: absolute; /* Position it in the top-right corner */
+  top: -0.1rem;
+  right: 4rem;
+}
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .quiz-item {
+        font-size: 1rem;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      #nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      #nav-links.showing {
+        display: flex;
+      }
+      /* Adjust quiz-grid layout on small screens */
+      .quiz-grid {
+        flex-direction: column; /* Stack quiz items on smaller screens */
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <ul>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="quizzes.html">Quizzes</a></li>
         <li><a href="projects.html">Projects</a></li>
@@ -206,65 +233,158 @@
 
   <main>
     <h1>My Quizzes</h1>
-    <div class="quiz-grid">
-      <div class="quiz-item" onclick="openModal('quiz1-img')">
-        <span class="quiz-title">ADVANCE HCI</span>
-        <div class="quiz-meta">
-          <span class="date">Date taken: March 29, 2025</span>
-          <span class="score">Score: 15/15</span>
+    <div class="test-container">
+      <h2>Pre-Test</h2>
+      <div class="quiz-grid">
+        <div class="quiz-item" onclick="openModal('quiz1-img')">
+          <span class="quiz-title">ADVANCE HCI <br> (Pre-Test 1)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: March 28, 2025</span>
+            <span class="score">Score: 15/15</span>
+          </div>
         </div>
-      </div>
-      <div class="quiz-item" onclick="openModal('quiz2-img')">
-        <span class="quiz-title">USER CENTERED DESIGN & RESEARCH METHODS</span>
-        <div class="quiz-meta">
-          <span class="date">Date taken: April 1, 2025</span>
-          <span class="score">Score: 13/15</span>
+        <div class="quiz-item" onclick="openModal('quiz2-img')">
+          <span class="quiz-title">USER CENTERED DESIGN <br> (Pre-Test 2)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: March 28, 2025</span>
+            <span class="score">Score: 15/15</span>
+          </div>
         </div>
-      </div>
-      <div class="quiz-item" onclick="openModal('quiz3-img')">
-        <span class="quiz-title">USABILITY PRINCIPLES & HEURISTIC EVALUATION</span>
-        <div class="quiz-meta">
-          <span class="date">Date taken: April 5, 2025</span>
-          <span class="score">Score: 14/15</span>
+        <div class="quiz-item" onclick="openModal('quiz3-img')">
+          <span class="quiz-title">USABILITY PRINCIPLES <br> (Pre-Test 3)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: March 28, 2025</span>
+            <span class="score">Score: 13/15</span>
+          </div>
         </div>
-      </div>
-      <div class="quiz-item" onclick="openModal('quiz4-img')">
-        <span class="quiz-title">INTERACTION DESIGN & PROTOTYPING</span>
-        <div class="quiz-meta">
-          <span class="date">Date taken: April 10, 2025</span>
-          <span class="score">Score: 12/15</span>
+        <div class="quiz-item" onclick="openModal('quiz4-img')">
+          <span class="quiz-title">USABILITY PRINCIPLES <br> (Pre-Test 4)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: March 28, 2025</span>
+            <span class="score">Score: 11/15</span>
+          </div>
         </div>
-      </div>
-      <div class="quiz-item" onclick="openModal('quiz5-img')">
-        <span class="quiz-title">INFORMATION ARCHITECTURE & NAVIGATION DESIGN</span>
-        <div class="quiz-meta">
-          <span class="date">Date taken: April 15, 2025</span>
-          <span class="score">Score: 15/15</span>
-        </div>
-      </div>
-      <div class="quiz-item" onclick="openModal('quiz6-img')">
-        <span class="quiz-title">Quiz 6</span>
-        <div class="quiz-meta">
-          <span class="date">Date taken:</span>
-          <span class="score">Score:</span>
+        <div class="quiz-item" onclick="openModal('quiz5-img')">
+          <span class="quiz-title">USABILITY PRINCIPLES <br> (Pre-Test 5)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: March 28, 2025</span>
+            <span class="score">Score: 18/20</span>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="test-container">
+      <h2>Post-Test</h2>
+      <div class="quiz-grid">
+        <div class="quiz-item" onclick="openModal('pquiz1-img')">
+          <span class="quiz-title">(Post-Test 1)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: May 6, 2025</span>
+            <span class="score">Score: 15/20</span>
+          </div>
+        </div>
+        <div class="quiz-item" onclick="openModal('pquiz2-img')">
+          <span class="quiz-title">(Post-Test 2)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: March 30, 2025</span>
+            <span class="score">Score: 18/20</span>
+          </div>
+        </div>
+        <div class="quiz-item" onclick="openModal('pquiz3-img')">
+          <span class="quiz-title">(Post-Test 3)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: March 3, 2025</span>
+            <span class="score">Score: 15/20</span>
+          </div>
+        </div>
+        <div class="quiz-item" onclick="openModal('pquiz4-img')">
+          <span class="quiz-title">(Post-Test 4)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: April 2, 2025</span>
+            <span class="score">Score: 16/20</span>
+          </div>
+        </div>
+        <div class="quiz-item" onclick="openModal('pquiz5-img')">
+          <span class="quiz-title">(Post-Test 5)</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: April 4, 2025</span>
+            <span class="score">Score: 18/20</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-container">
+      <h2>Midterm</h2>
+
+      <div class="quiz-grid">
+        <div class="quiz-item" onclick="openModal('midterm-img')">
+          <span class="quiz-title">Midterm Exam</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: April 10, 2025</span>
+            <span class="score">Score: 33/70</span>
+          </div>
+        </div>
+        <!-- Add more if needed -->
+      </div>
+    </div>
+    
+    <div class="test-container">
+      <h2>Long Quiz</h2>
+      <div class="quiz-grid">
+        <div class="quiz-item" onclick="openModal('longquiz-img')">
+          <span class="quiz-title">Long Quiz</span>
+          <div class="quiz-meta">
+            <span class="date">Date taken: </span>
+            <span class="score">Score: 31</span>
+          </div>
+        </div>
+        <!-- Add more if needed -->
+      </div>
+    </div>
+    
+    <div class="test-container">
+      <h2>Activity Score</h2>
+      <div class="quiz-grid">
+        <div class="quiz-item" onclick="openModal('activityscore-img')">
+          <span class="quiz-title">Activity 1</span>
+          <div class="quiz-meta">
+            <span class="date">Date submitted: March 20, 2025 </span>
+            <span class="score">Score: 100/100 </span>
+          </div>
+        </div>
+        <!-- Add more if needed -->
+      </div>
+    </div>
+    
+
   </main>
 
-  <!-- Modal Structure -->
+  <!-- Modal -->
   <div id="modal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img class="modal-content" id="modal-img" />
   </div>
 
-  <!-- Hidden Image Sources -->
+  <!-- PRE-TEST SCORES -->
   <img id="quiz1-img" src="pre-test-1-5/1.png" style="display:none;" />
   <img id="quiz2-img" src="pre-test-1-5/2.png" style="display:none;" />
   <img id="quiz3-img" src="pre-test-1-5/3.png" style="display:none;" />
   <img id="quiz4-img" src="pre-test-1-5/4.png" style="display:none;" />
   <img id="quiz5-img" src="pre-test-1-5/5.png" style="display:none;" />
-  <img id="quiz6-img" src="pre-test-1-5/6.png" style="display:none;" />
+
+<!-- POST-TEST SCORES -->
+  <img id="pquiz1-img" src="post-test-1-5/post-test1.png" style="display:none;" />
+  <img id="pquiz2-img" src="post-test-1-5/post-test2.png" style="display:none;" />
+  <img id="pquiz3-img" src="post-test-1-5/post-test3.png" style="display:none;" />
+  <img id="pquiz4-img" src="post-test-1-5/post-test4.png" style="display:none;" />
+  <img id="pquiz5-img" src="post-test-1-5/post-test5.png" style="display:none;" />
+
+<!-- FOR ACTIVITY, LONGQUIZ AND MIDTERM SCORES -->
+  <img id="midterm-img" src="midterm,act,longquiz/midtermexam.png" style="display:none;" />
+  <img id="activityscore-img" src="midterm,act,longquiz/activityscore.png" style="display:none;" />
+  <img id="longquiz-img" src="midterm,act,longquiz/longquiz.png" style="display:none;" />
 
   <footer id="contact">
     <p>Contact: niejniej15@gmail.com</p>
@@ -272,17 +392,23 @@
   </footer>
 
   <script>
-    function openModal(imgId) {
-      const modal = document.getElementById("modal");
-      const modalImg = document.getElementById("modal-img");
-      const imgSrc = document.getElementById(imgId).src;
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
 
-      modal.style.display = "block";
-      modalImg.src = imgSrc;
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('showing');
+    });
+
+    function openModal(imageId) {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      modal.style.display = 'block';
+      modalImg.src = document.getElementById(imageId).src;
     }
 
     function closeModal() {
-      document.getElementById("modal").style.display = "none";
+      const modal = document.getElementById('modal');
+      modal.style.display = 'none';
     }
   </script>
 </body>
